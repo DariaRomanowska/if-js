@@ -13,11 +13,11 @@ console.log(user);
 let test = 1;
 test++;
 
-console.log(test + "1"); // '21' string
+console.log(test + '1'); // '21' string
 console.log(test - 1); // 1 number
 
-let newTest = Boolean(false);
-console.log(newTest);
+test = Boolean(false);
+console.log(test);
 
 console.log('----------');
 
@@ -34,7 +34,7 @@ console.log('----------');
 const arr2 = [2, 5, 8, 15, 0, 6, 20, 3];
 
 for (const i of arr2) {
-  if (i >= 5 && i <= 10) {
+  if (i > 5 && i < 10) {
     console.log(i);
   }
 }
