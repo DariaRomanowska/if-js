@@ -13,8 +13,11 @@ console.log(user);
 let test = 1;
 test++;
 
-console.log(test + '1'); // '21' string
-console.log(test - 1); // 1 number
+test = test + '1';
+console.log(test); // '21' string
+
+test = test - 1;
+console.log(test); // 1 number
 
 test = Boolean(false);
 console.log(test);
@@ -40,11 +43,13 @@ for (const i of arr2) {
 }
 console.log('----------');
 
-for (const elem of arr2){
-  if(elem % 3){
+for (const elem of arr2) {
+  if (elem % 3) {
     console.log(elem);
   }
 }
-console.log('----------');
+
+
+
 
 
