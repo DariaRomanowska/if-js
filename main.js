@@ -1,41 +1,45 @@
-const check = (palindrome) =>{
+const palindrome = (word) =>{
 
-  let long = palindrome.length;
+  let long = word.length;
   for (let i = 0; i < (long / 2); i++ ){
     console.log(i);
-    if (palindrome[i] !== palindrome[long - 1 - i]){
-      return 'false';
+    if (word[i] !== word[long - 1 - i]){
+      return false;
     }
   }
-  return 'true';
+  return true;
 }
 
-console.log(check('divider'));
+console.log(palindrome('redivider'));
 
 console.log('----------');
 
-let a = 89;
-let b = 86;
+let a = 56;
+let b = 321;
 
-max = a > b ? 'true' : 'false';
+max = a > b ? a : b;
 console.log(max);
 
 console.log('----------');
 
-let c = 8;
-let d = 86;
+let c = -45;
+let d = 6;
 
-min = c < d ? 'true' : 'false';
+min = c < d ? c : d;
 console.log(min);
 
 console.log('----------');
 
-const arr = ['4', '12', '50', '70', '62', '10', '93', '90', '7', '100'];
-for (let i = 0; i < arr.length; i++){
-  arr[i] = arr[i].replace('0', 'zero');
+let arr = [4, 12, 50, 70, 62, 10, 93, 90, 7, 100];
+
+for (let elem in arr){
+  if(arr[elem] / 100 === 1) {
+    arr[elem] = (arr[elem]  / 100) + 'zero' + 'zero';
+  } else if (arr[elem] % 10 === 0) {
+    arr[elem] = arr[elem] / 10 + 'zero';
+  }
 }
-
 console.log(arr);
-
+console.log('----------');
 
 
