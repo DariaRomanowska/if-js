@@ -17,10 +17,10 @@ test = test + '1';
 console.log(test); // '21' string
 
 test = test - 1;
-console.log(test); // 1 number
+console.log(test); // 20 number
 
-test = Boolean(false);
-console.log(test);
+
+console.log(test === 20);
 
 console.log('----------');
 
@@ -48,8 +48,3 @@ for (const elem of arr2) {
     console.log(elem);
   }
 }
-
-
-
-
-
