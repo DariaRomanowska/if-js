@@ -19,8 +19,8 @@ console.log(test); // '21' string
 test = test - 1;
 console.log(test); // 20 number
 
-test = Boolean(test === 20);
-console.log(test);
+test = Boolean(test);
+console.log(test); // true
 
 console.log('----------');
 
