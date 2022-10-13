@@ -9,25 +9,25 @@ const text1 = document.getElementById('text1');
 const text2 = document.getElementById('text2');
 const text3 = document.getElementById('text3');
 
-const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
-let i = 0;
 
-function myFunction() {
-  i++;
-  if (i > colors.length - 1) {
-    i = 0;
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
+
+function getColor(item) {
+  if(colors.find(el => el === item)) {
+    for (let i = 0; i < colors.length; i++) {
+      if (colors[i] === item) {
+        return colors[++i] ?? colors[0]
+      }
+    }
+  } else {
+    return colors[0]
   }
 }
 
-text1.addEventListener('click', function() {
-  myFunction();
-  document.getElementById('text1').style.color = colors[i];
-});
-text2.addEventListener('click', function() {
-  myFunction();
-  document.getElementById('text2').style.color = colors[i];
-});
-text3.addEventListener('click', function() {
-  myFunction();
-  document.getElementById('text3').style.color = colors[i];
-});
+function setColor(element) {
+  element.style.color = getColor(element.style.color)
+}
+
+text1.addEventListener("click", () => setColor(text1));
+text2.addEventListener("click", () => setColor(text2));
+text3.addEventListener("click", () => setColor(text3));
