@@ -1,14 +1,74 @@
-const palindrome = (word) => {
+console.log('----LESSON-7-----');
+const obj1 = {
+  a: 'a',
+  b: {
+    a: 'a',
+    b: 'b',
+    c: {
+      a: 1,
+    },
+  },
+};
+const obj2 = {
+  b: {
+    c: {
+      a: 1,
+    },
+    b: 'b',
+    a: 'a',
+  },
+  a: 'a',
+};
+const obj3 = {
+  a: {
+    c: {
+      a: 'a',
+    },
+    b: 'b',
+    a: 'a',
+  },
+  b: 'b',
+};
 
-    let long = word.length;
-    for (let i = 0; i < (long / 2); i++) {
-        console.log(i);
-        if (word[i] !== word[long - 1 - i]) {
-            return false;
-        }
+function deepEqual(object1, object2) {
+  const props1 = Object.getOwnPropertyNames(object1);
+  const props2 = Object.getOwnPropertyNames(object2);
+
+  if (props1.length !== props2.length) {
+    return false;
+  }
+
+  for (let i = 0; i < props1.length; i++) {
+    const prop = props1[i];
+    const both =
+      typeof object1[prop] === 'object' && typeof object2[prop] === 'object';
+
+    if (
+      (!both && object1[prop] !== object2[prop]) ||
+      (both && !deepEqual(object1[prop], object2[prop]))
+    ) {
+      return false;
     }
-    return true;
+  }
+  return true;
 }
+
+console.log(deepEqual(obj1, obj2));
+console.log(deepEqual(obj1, obj3));
+
+console.log('--------');
+
+console.log('----LESSON-2-----');
+const palindrome = (word) => {
+  let long = word.length;
+  for (let i = 0; i < long / 2; i++) {
+    console.log(i);
+    if (word[i] !== word[long - 1 - i]) {
+      return false;
+    }
+  }
+  return true;
+};
 
 console.log(palindrome('redivider'));
 
@@ -17,7 +77,7 @@ console.log('----------');
 let a = 56;
 let b = 321;
 
-const max = (a, b) => a > b ? a : b;
+const max = (a, b) => (a > b ? a : b);
 console.log(max(a, b));
 
 console.log('----------');
@@ -25,7 +85,7 @@ console.log('----------');
 let c = -45;
 let d = 6;
 
-const min = (c, d) => c < d ? c : d;
+const min = (c, d) => (c < d ? c : d);
 console.log(min(c, d));
 
 console.log('----------');
@@ -33,26 +93,25 @@ console.log('----------');
 const arr = [4, 12, 50, 70, 62, 10, 93, 90, 7, 100];
 
 const search = (arr) => {
-    let res = [];
+  let res = [];
 
-    for (let item of arr) {
-        const replacedZero = String(item).replaceAll('0', 'zero');
+  for (let item of arr) {
+    const replacedZero = String(item).replaceAll('0', 'zero');
 
-        if(Number(replacedZero)) {
-            res.push(Number(replacedZero))
-        } else {
-            res.push(replacedZero);
-        }
+    if (Number(replacedZero)) {
+      res.push(Number(replacedZero));
+    } else {
+      res.push(replacedZero);
     }
+  }
 
-    return res;
-}
+  return res;
+};
 
-const result = search(arr)
+const result = search(arr);
 console.log(result);
 console.log('----------');
 
-=======
 let user;
 user = 'John Doe';
 console.log(user);
