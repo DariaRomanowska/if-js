@@ -1,8 +1,10 @@
 console.log('--- LESSON 6 ---');
 const word = 'redivide';
-const palindrom = word.split('').reverse().join('');
+const palindrome6 = (word) => {
+  return word.split('').reverse().join('');
+};
 
-console.log(word === palindrom);
+console.log(palindrome6(word) === word);
 
 console.log('------');
 
@@ -164,16 +166,17 @@ const hotels = [
   },
 ];
 const find = (value) => {
-  return hotels.filter(
+  let findRes = hotels.filter(
     (el) => el.name === value || el.city === value || el.country === value,
+  );
+  return findRes.map(({ country, city, name }) =>
+    String([`${country}, ${city}, ${name}`]),
   );
 };
 
 const findString = find('Poland');
 
-console.log(
-  findString.map(({ name, city, country }) => String([name, city, country])),
-);
+console.log(findString);
 
 console.log('-----');
 
@@ -189,16 +192,15 @@ console.log(cityByCountry);
 console.log('------');
 
 const daysInMonth = 30;
-const daysInWeek = 7;
 const dayOfWeek = 2;
 
-const getCalendarMonth = (daysInMonth, daysInWeek, dayOfWeek) => {
+const getCalendarMonth = (daysInMonth, dayOfWeek) => {
   let day = daysInMonth - dayOfWeek + 1;
   let dates = [];
   for (let i = 0; i < 5; i++) {
     const week = [];
-    for (let j = 0; j < daysInWeek; j++) {
-      if (dayOfWeek > 7) {
+    for (let j = 0; j < 7; j++) {
+      if (dayOfWeek > daysInMonth || dayOfWeek > 7) {
         return 'Error';
       } else if (day > 30) {
         day = 1;
@@ -207,14 +209,15 @@ const getCalendarMonth = (daysInMonth, daysInWeek, dayOfWeek) => {
       day++;
     }
     dates.push(week);
-  }
+ }
   return dates;
 };
 
-const calendarMonth = getCalendarMonth(daysInMonth, daysInWeek, dayOfWeek);
+const calendarMonth = getCalendarMonth(daysInMonth, dayOfWeek);
 console.log(calendarMonth);
 
-console.log('---------');
+let daysArray = calendarMonth.flat();
+console.log(daysArray);
 
 console.log('--- LESSON 3 ---');
 const palindrome = (word) => {
