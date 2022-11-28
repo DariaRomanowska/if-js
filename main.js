@@ -1,12 +1,126 @@
-let date = '2020-11-26';
+console.log('----LESSON-9----');
 
+const el1 = document.getElementById('text1');
+const el2 = document.getElementById('text2');
+const el3 = document.getElementById('text3');
+
+const colors = {
+  data: ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'],
+  [Symbol.iterator]: function () {
+    let index = 0;
+    const colorData = this.data;
+    return {
+      next() {
+        if (index >= colorData.length) {
+          index = 0;
+          return { value: undefined, done: true };
+        } else {
+          return { value: colorData[index++], done: false };
+        }
+      },
+    };
+  },
+};
+const iterator = colors[Symbol.iterator]();
+
+const changeStyle = (id) => (event) => {
+  event.target.style.color = iterator.next(id).value;
+};
+
+el1.addEventListener('click', changeStyle(colors.data.index));
+el2.addEventListener('click', changeStyle(colors.data.index));
+el3.addEventListener('click', changeStyle(colors.data.index));
+
+console.log('----CALENDAR-----');
+function getDaysInMonth(month, year) {
+  const monthNum = new Date(Date.parse(month + ' 1,' + year)).getMonth() + 1;
+  return new Date(year, monthNum, 0).getDate();
+}
+
+const prevMonth = getDaysInMonth('oct', 2022);
+const daysInMonth = getDaysInMonth('nov', 2022);
+
+const dateCurrMonth = new Date('November 01, 2022');
+const dayOfWeek = dateCurrMonth.getDay();
+console.log(dayOfWeek);
+const getCalendarMonth = (daysInMonth, dayOfWeek) => {
+  let day = daysInMonth - dayOfWeek + 1;
+  const dates = [];
+  for (let i = 0; i < 5; i++) {
+    const week = [];
+    for (let j = 0; j < 7; j++) {
+      if (dayOfWeek > daysInMonth || dayOfWeek > 7) {
+        return 'Error';
+      } else if (day > prevMonth) {
+        day = 1;
+      }
+      week.push(day);
+      day++;
+    }
+    dates.push(week);
+  }
+  return dates;
+};
+
+const calendarMonth = getCalendarMonth(daysInMonth, dayOfWeek);
+console.log(calendarMonth);
+const daysArray = calendarMonth.flat();
+const currentDay = new Date();
+const today = currentDay.getDate();
+const selectedDate = (arr, checkInDate, checkOutDate) => {
+  const resDate = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (checkInDate === i) {
+      resDate.push(true);
+    } else if (checkInDate > 31) {
+      return `Error day`;
+    } else if (checkOutDate === i && checkOutDate > checkInDate) {
+      resDate.push(true);
+    } else if (checkOutDate < checkInDate) {
+      return `Error date`;
+    } else resDate.push(false);
+  }
+  return resDate;
+};
+const isToday = (arr, currDay) => {
+  const todayRes = [];
+  for (let i = 0; i < arr.length; i++) {
+    if (currDay === i) {
+      todayRes.push(true);
+    } else if (currDay !== i) {
+      todayRes.push(false);
+    }
+  }
+  return todayRes;
+};
+
+const currentDayRes = isToday(daysArray, today);
+console.log(currentDayRes);
+const selectedDateRes = selectedDate(daysArray, 3, 5);
+const days = [{}];
+const selected = [{}];
+const curDay = [{}];
+
+daysArray.forEach((item) => days.push({ dayOfMonth: item }));
+selectedDateRes.forEach((item) => selected.push({ selectedDay: item }));
+currentDayRes.forEach((item) => curDay.push({currentDay: item}));
+
+const calendar = days.map((item, index) => ({
+  ...item,
+  ...selected[index],
+  ...curDay[index],
+}));
+console.log(calendar);
+
+console.log('----LESSON----');
+const dateEx = '2020-11-26';
 const format = (query) => {
-  let querySplit = query.split('-');
-  let queryReverse = querySplit.reverse();
+  const querySplit = query.split('-');
+  const queryReverse = querySplit.reverse();
   return queryReverse.join('.');
 };
 
-console.log(format(date));
+console.log(format(dateEx));
 
 console.log('--------');
 
@@ -14,54 +128,60 @@ const data = [
   {
     country: 'Russia',
     city: 'Saint Petersburg',
-    hotel: 'Hotel Leopold'
+    hotel: 'Hotel Leopold',
   },
   {
     country: 'Spain',
     city: 'Santa Cruz de Tenerife',
-    hotel: 'Apartment Sunshine'
+    hotel: 'Apartment Sunshine',
   },
   {
     country: 'Slowakia',
     city: 'Vysokie Tatry',
-    hotel: 'Villa Kunerad'
+    hotel: 'Villa Kunerad',
   },
   {
     country: 'Germany',
     city: 'Berlin',
-    hotel: 'Hostel Friendship'
+    hotel: 'Hostel Friendship',
   },
   {
     country: 'Indonesia',
     city: 'Bali',
-    hotel: 'Ubud Bali Resort&SPA'
+    hotel: 'Ubud Bali Resort&SPA',
   },
   {
     country: 'Netherlands',
     city: 'Rotterdam',
-    hotel: 'King Kong Hostel'
+    hotel: 'King Kong Hostel',
   },
   {
     country: 'Marocco',
     city: 'Ourika',
-    hotel: 'Rokoko Hotel'
+    hotel: 'Rokoko Hotel',
   },
   {
     country: 'Germany',
     city: 'Berlin',
-    hotel: 'Hotel Rehberge Berlin Mitte'
-  }
+    hotel: 'Hotel Rehberge Berlin Mitte',
+  },
 ];
 
-let value = 'Germany';
-const search = data.reduce(function(newArr, data) {
+const value = 'Germany';
+const searchCity = data.reduce(function (newArr, data) {
   if (data.country === value || data.city === value || data.hotel === value) {
-    newArr.push(String(data.country) + ', ' + String(data.city) + ', ' + String(data.hotel));
+    newArr.push(
+      String(data.country) +
+        ', ' +
+        String(data.city) +
+        ', ' +
+        String(data.hotel),
+    );
   }
   return newArr;
 }, []);
 
-console.log(search);
+console.log(searchCity);
 
 console.log('----LESSON-7-----');
 const obj1 = {
@@ -125,7 +245,7 @@ console.log('--------');
 
 console.log('----LESSON-2-----');
 const palindrome = (word) => {
-  let long = word.length;
+  const long = word.length;
   for (let i = 0; i < long / 2; i++) {
     console.log(i);
     if (word[i] !== word[long - 1 - i]) {
@@ -139,16 +259,16 @@ console.log(palindrome('redivider'));
 
 console.log('----------');
 
-let a = 56;
-let b = 321;
+const a = 56;
+const b = 321;
 
 const max = (a, b) => (a > b ? a : b);
 console.log(max(a, b));
 
 console.log('----------');
 
-let c = -45;
-let d = 6;
+const c = -45;
+const d = 6;
 
 const min = (c, d) => (c < d ? c : d);
 console.log(min(c, d));
@@ -158,9 +278,9 @@ console.log('----------');
 const arr = [4, 12, 50, 70, 62, 10, 93, 90, 7, 100];
 
 const search = (arr) => {
-  let res = [];
+  const res = [];
 
-  for (let item of arr) {
+  for (const item of arr) {
     const replacedZero = String(item).replaceAll('0', 'zero');
 
     if (Number(replacedZero)) {
