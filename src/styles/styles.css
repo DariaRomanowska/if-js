@@ -1,4 +1,4 @@
-@import "./fonts.css";
+@import './fonts.css';
 
 :root {
   --text-color: #383838;
@@ -66,7 +66,7 @@ body {
   width: 100%;
 }
 
-[class*="col-"] {
+[class*='col-'] {
   padding-left: 16px;
   padding-right: 16px;
 }
@@ -217,7 +217,7 @@ nav a {
 }
 
 nav a::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 0;
   height: 4px;
@@ -379,7 +379,7 @@ h2 {
 }
 
 h2::after {
-  content: "";
+  content: '';
   position: absolute;
   width: 0;
   height: 4px;
@@ -458,11 +458,14 @@ h2:hover::after {
 }
 
 .homes {
-  display: grid;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
   justify-items: center;
   row-gap: 104px;
   padding-top: 120px;
   padding-bottom: 120px;
+  position: relative;
 }
 
 .homes-title {
@@ -475,17 +478,31 @@ h2:hover::after {
 }
 
 .homes--gallery {
-  display: grid;
-  position: relative;
-  row-gap: 24px;
+  display: flex;
   column-gap: 16px;
-  grid-template-columns: repeat(4, 1fr);
-  grid-template-rows: repeat(3, auto);
+  flex-direction: row;
+  overflow: auto;
+  scroll-behavior: smooth;
+  scrollbar-width: none;
 }
 
-.homes--gallery img {
-  grid-row: 1 / 2;
+.homes--gallery::-webkit-scrollbar {
+  height: 0;
+}
+
+.slider {
   width: 100%;
+  transition: 500ms;
+  display: grid;
+  grid-template-rows: repeat(4, auto);
+  row-gap: 24px;
+  margin: auto;
+  box-sizing: border-box;
+}
+
+.homesImg {
+  width: 300px;
+  height: 300px;
 }
 
 .name {
@@ -518,28 +535,41 @@ h2:hover::after {
   color: #bfbfbf;
 }
 
-.homes--gallery div:last-of-type {
-  width: 40px;
-  height: 40px;
-  content: "";
-  position: absolute;
-  right: 0;
-  bottom: 63%;
-  transform: translateX(50%);
-  background-color: #f3f3f4;
-  border-radius: 50%;
-  box-shadow: 0 4px 4px rgb(0 0 0 / 25%);
-  cursor: pointer;
+.localization--country {
+  grid-row: 4 / 5;
+  font-family: Roboto, sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  margin-top: -20px;
+  color: #bfbfbf;
 }
 
-.circle svg {
-  width: 9px;
-  height: 21px;
+.circle-svg {
+  display: flex;
+  justify-content: center;
+  align-content: center;
+  background: white;
+  border: none;
+  padding: 8px;
+  border-radius: 50%;
+  outline: 0;
+  cursor: pointer;
   position: absolute;
+}
+
+#next {
   top: 50%;
-  left: 50%;
-  transform: translate(-50%, -50%);
-  fill: #f3f3f4;
+  right: 0;
+  transform: translate(15%, -50%);
+}
+
+#prev {
+  top: 50%;
+  left: 0;
+  transform: translate(-15%, -50%);
+  display: none;
 }
 
 .destination {
@@ -665,7 +695,7 @@ h2:hover::after {
 .destination--gallery div:last-child {
   width: 40px;
   height: 40px;
-  content: "";
+  content: '';
   position: absolute;
   right: 50%;
   bottom: -26%;
@@ -800,7 +830,7 @@ h2:hover::after {
   width: 100%;
   height: 48px;
   position: absolute;
-  content: "";
+  content: '';
   bottom: 0;
   background-color: rgb(56 56 56 / 70%);
   transform: translateY(-1px);
@@ -909,7 +939,7 @@ h2:hover::after {
 ._rokoko div:last-child {
   width: 40px;
   height: 40px;
-  content: "";
+  content: '';
   position: absolute;
   right: 0;
   bottom: 45%;
@@ -929,7 +959,7 @@ h2:hover::after {
   transform: translate(-50%, -50%);
 }
 
-.slider {
+.slider-svg {
   display: none;
 }
 
@@ -1186,7 +1216,7 @@ footer {
 
   ._midl::before {
     position: absolute;
-    content: "";
+    content: '';
     height: 1px;
     width: 32px;
     transform: rotate(90deg) translate(-50%, -50%);
@@ -1197,7 +1227,7 @@ footer {
 
   ._end::before {
     position: absolute;
-    content: "";
+    content: '';
     height: 1px;
     width: 32px;
     transform: rotate(90deg) translate(-50%, -50%);
@@ -1375,7 +1405,7 @@ footer {
   .homes--gallery div:last-of-type {
     width: 28px;
     height: 28px;
-    content: "";
+    content: '';
     position: absolute;
     right: 0;
     top: 30%;
@@ -1442,7 +1472,7 @@ footer {
   .destination--gallery div:last-child {
     width: 28px;
     height: 28px;
-    content: "";
+    content: '';
     position: absolute;
     right: 0;
     top: 32%;

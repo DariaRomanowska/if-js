@@ -437,39 +437,36 @@
       </div>
     </section>
     <section class="background-homes">
-      <div class="container homes">
-        <h2 class="homes-title">Homes guests loves</h2>
-        <div class="homes--gallery">
-          <img src="./image/main/leopold.jpg" alt="photo of hotel leopold" />
-          <p class="name">Hotel Leopold</p>
-          <p class="localization">Saint Petersburg, Russia</p>
-          <img
-            src="./image/main/sunshine.jpg"
-            alt="photo of apartment sunshine"
-          />
-          <p class="name">Apartment Sunshine</p>
-          <p class="localization">Santa Cruz de Tenerife, <br />Spain</p>
-          <img
-            class="homes_sm"
-            src="./image/main/kunerad.jpg"
-            alt="photo of villa kunerad"
-          />
-          <p class="homes_sm name">Villa Kunerad</p>
-          <p class="homes_sm localization">Vysokie Tatry, Slowakia</p>
-          <img
-            class="homes_sm"
-            src="./image/main/friendship.jpg"
-            alt="photo of hostel friendship"
-          />
-          <p class="homes_sm name">Hostel Friendship</p>
-          <p class="homes_sm localization">Berlin, Germany</p>
-          <div class="circle">
-            <svg>
-              <use href="#cursor" />
-            </svg>
+      <div id="div" class="container homes">
+          <div class="homes--gallery">
+            <button id="prev" class="circle-svg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path
+                  d="M15.61 7.41L14.2 6l-6 6 6 6 1.41-1.41L11.03 12l4.58-4.59z"
+                />
+              </svg>
+            </button>
+            <button id="next" class="circle-svg">
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                width="24"
+                height="24"
+                viewBox="0 0 24 24"
+              >
+                <path fill="none" d="M0 0h24v24H0V0z" />
+                <path
+                  d="M10.02 6L8.61 7.41 13.19 12l-4.58 4.59L10.02 18l6-6-6-6z"
+                />
+              </svg>
+            </button>
           </div>
         </div>
-      </div>
     </section>
     <section>
       <div class="container destination">
@@ -483,28 +480,28 @@
         <div class="destination--gallery">
           <div class="destination--gallery__hover">
             <div class="destination--gallery__hover-img">
-              <img src="./image/main/maldives.png" alt="Maldives" />
+              <img src="./src/image/main/maldives.png" alt="Maldives" />
             </div>
             <p>Maldives</p>
             <input type="submit" name="choice" value="Book now" />
           </div>
           <div class="destination--gallery__hover">
             <div class="destination--gallery__hover-img">
-              <img src="./image/main/spain.png" alt="Spain" />
+              <img src="./src/image/main/spain.png" alt="Spain" />
             </div>
             <p>Spain</p>
             <input type="submit" name="choice" value="Book now" />
           </div>
           <div class="destination--gallery__hover">
             <div class="destination--gallery__hover-img">
-              <img src="./image/main/norway.png" alt="Norway" />
+              <img src="./src/image/main/norway.png" alt="Norway" />
             </div>
             <p>Norway</p>
             <input type="submit" name="choice" value="Book now" />
           </div>
           <div class="destination--gallery__hover">
             <div class="destination--gallery__hover-img">
-              <img src="./image/main/island.png" alt="Island" />
+              <img src="./src/image/main/island.png" alt="Island" />
             </div>
             <p>Island</p>
             <input type="submit" name="choice" value="Book now" />
@@ -539,7 +536,7 @@
         <div class="reviews--top">
           <img
             class="reviews--column__img"
-            src="./image/main/ubud.png"
+            src="./src/image/main/ubud.png"
             alt="Ubud Bali Resort&SPA"
           />
           <div class="background-price">
@@ -561,7 +558,7 @@
             </div>
             <div class="user">
               <p>Hanna Ivanova</p>
-              <img src="./image/main/ua.png" alt="Ukraine" />
+              <img src="./src/image/main/ua.png" alt="Ukraine" />
             </div>
           </div>
           <div class="reviews--bottom__text">
@@ -571,7 +568,7 @@
               the people are incredibly helpful and generous with their time and
               advice.
             </p>
-            <svg class="slider">
+            <svg class="slider-svg">
               <use href="#slider" />
             </svg>
           </div>
@@ -579,7 +576,7 @@
         <div class="reviews--top _king-kong">
           <img
             class="reviews--column__img"
-            src="./image/main/king-kong.png"
+            src="./src/image/main/king-kong.png"
             alt="King Kong Hostel"
           />
           <div class="background-price">
@@ -601,7 +598,7 @@
             </div>
             <div class="user">
               <p>Adam Smith</p>
-              <img src="./image/main/us.png" alt="USA" />
+              <img src="./src/image/main/us.png" alt="USA" />
             </div>
           </div>
           <div class="reviews--bottom__text">
@@ -618,7 +615,7 @@
         <div class="reviews--top _rokoko">
           <img
             class="reviews--column__img"
-            src="./image/main/rokoko.png"
+            src="./src/image/main/rokoko.png"
             alt="Rokoko Hotel"
           />
           <div class="background-price">
@@ -645,7 +642,7 @@
             </div>
             <div class="user">
               <p>Anika Messer</p>
-              <img src="./image/main/de.png" alt="Germany" />
+              <img src="./src/image/main/de.png" alt="Germany" />
             </div>
           </div>
           <div class="reviews--bottom__text">
@@ -709,6 +706,6 @@
         &#169; 2020 Triphouse, Inc. All rights reserved
       </p>
     </footer>
-  <script src="src/scripts/main.js"></script>
+    <script src="src/scripts/main.js"></script>
   </body>
 </html>
