@@ -66,40 +66,40 @@ const data = [
 ];
 
 // let divHomes = document.querySelector('.homes')
-const divMain = document.getElementById('div');
-const h2 = document.createElement('h2');
-h2.className = 'homes-title';
-h2.innerHTML = 'Homes guests loves';
-divMain.append(h2);
-const homesGalery = document.querySelector('.homes--gallery');
-homesGalery.className = 'homes--gallery';
-divMain.append(homesGalery);
+const blockHomes = document.getElementById('div');
+const titleBlockHomes = document.createElement('h2');
+titleBlockHomes.className = 'homes-title';
+titleBlockHomes.innerHTML = 'Homes guests loves';
+blockHomes.append(titleBlockHomes);
+const homesGallery = document.querySelector('.homes--gallery');
+homesGallery.className = 'homes--gallery';
+blockHomes.append(homesGallery);
 
 window.addEventListener('load', function () {
   data.map((element) => {
-    const divSlider = document.createElement('div');
-    divSlider.className = 'slider';
-    homesGalery.append(divSlider);
+    const blockSliderHome = document.createElement('div');
+    blockSliderHome.className = 'slider';
+    homesGallery.append(blockSliderHome);
 
-    const imgHomes = document.createElement('img');
-    imgHomes.className = 'homesImg';
-    imgHomes.src = element.imageUrl;
-    divSlider.appendChild(imgHomes);
+    const imgHotel = document.createElement('img');
+    imgHotel.className = 'homesImg';
+    imgHotel.src = element.imageUrl;
+    blockSliderHome.appendChild(imgHotel);
 
-    const pName = document.createElement('p');
-    pName.className = 'name';
-    pName.innerHTML = element.name;
-    divSlider.appendChild(pName);
+    const nameHotel = document.createElement('p');
+    nameHotel.className = 'name';
+    nameHotel.innerHTML = element.name;
+    blockSliderHome.appendChild(nameHotel);
 
-    const pCity = document.createElement('p');
-    pCity.className = 'localization';
-    pCity.innerHTML = element.city;
-    divSlider.appendChild(pCity);
+    const cityHotel = document.createElement('p');
+    cityHotel.className = 'localization';
+    cityHotel.innerHTML = element.city;
+    blockSliderHome.appendChild(cityHotel);
 
-    const pCountry = document.createElement('p');
-    pCountry.className = 'localization--country';
-    pCountry.innerHTML = element.country;
-    divSlider.appendChild(pCountry);
+    const countryHotel = document.createElement('p');
+    countryHotel.className = 'localization--country';
+    countryHotel.innerHTML = element.country;
+    blockSliderHome.appendChild(countryHotel);
   });
 });
 
@@ -109,22 +109,22 @@ const content = document.querySelectorAll('.slider'),
   prev = document.getElementById('prev');
 
 next.addEventListener('click', () => {
-  homesGalery.scrollBy(width + gap, 0);
-  if (homesGalery.scrollWidth !== 0) {
+  homesGallery.scrollBy(width + gap, 0);
+  if (homesGallery.scrollWidth !== 0) {
     prev.style.display = 'flex';
   }
-  if (content.scrollWidth - width - gap <= homesGalery.scrollLeft + width) {
+  if (homesGallery.scrollLeft - width - gap <= 0) {
     next.style.display = 'none';
   }
 });
 prev.addEventListener('click', () => {
-  homesGalery.scrollBy(-(width + gap), 0);
-  if (homesGalery.scrollLeft - width - gap <= 0) {
+  homesGallery.scrollBy(-(width + gap), 0);
+  if (homesGallery.scrollLeft - width - gap <= 0) {
     prev.style.display = 'none';
   }
-  if (!content.scrollWidth - width - gap <= homesGalery.scrollLeft + width) {
+  if (!content.scrollWidth - width - gap <= homesGallery.scrollLeft + width) {
     next.style.display = 'flex';
   }
 });
-let width = homesGalery.offsetWidth;
-window.addEventListener('resize', () => (width = homesGalery.offsetWidth));
+let width = homesGallery.offsetWidth;
+window.addEventListener('resize', () => (width = homesGallery.offsetWidth));
