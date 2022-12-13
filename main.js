@@ -19,15 +19,17 @@ const colors = {
     };
   },
 };
-const iterator = colors[Symbol.iterator]();
+const iterator1 = colors[Symbol.iterator]();
+const iterator2 = colors[Symbol.iterator]();
+const iterator3 = colors[Symbol.iterator]();
 
 el1.onclick = function changeStyle(event) {
-  event.target.style.color = iterator.next().value;
+  event.target.style.color = iterator1.next().value;
 };
 
 el2.onclick = function changeStyle(event) {
-  event.target.style.color = iterator.next().value;
+  event.target.style.color = iterator2.next().value;
 };
 el3.onclick = function changeStyle(event) {
-  event.target.style.color = iterator.next().value;
+  event.target.style.color = iterator3.next().value;
 };
