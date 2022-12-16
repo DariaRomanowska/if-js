@@ -384,7 +384,7 @@ nav a:hover::after {
 
 .btn-check-l,
 .btn-check-r {
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 18px;
@@ -413,7 +413,7 @@ nav a:hover::after {
   margin-right: -1px;
 }
 
-.disable{
+.disable {
   border: 1px solid #cecece;
   color: #cecece;
 }
@@ -425,8 +425,8 @@ nav a:hover::after {
   gap: 12px;
 }
 
-.child-block{
-   display: none;
+.child-block {
+  display: none;
   padding: 0 22px 22px 22px;
   width: 100%;
   background-color: #ffffff;
@@ -438,7 +438,7 @@ nav a:hover::after {
   order: 1;
 }
 
-.child-text{
+.child-text {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
@@ -447,25 +447,26 @@ nav a:hover::after {
   margin-bottom: 12px;
 }
 
-.child-select, .child-opt{
+.child-select,
+.child-opt {
   border: 1px solid #3077c6;
-  font-family: 'Roboto',sans-serif;
+  font-family: 'Roboto', sans-serif;
   font-style: normal;
   font-weight: 400;
   font-size: 12px;
   line-height: 14px;
   color: #333333;
 }
-.child-opt{
+.child-opt {
   gap: 8px;
 }
 
-.child-select{
+.child-select {
   border: 1px solid #3077c6;
   padding: 8px;
 }
 
-.show-child{
+.show-child {
   display: flex;
   flex-direction: column;
   justify-content: space-between;
