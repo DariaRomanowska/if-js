@@ -6,7 +6,7 @@ sectionGallery.append(blockTitle);
 const homesGallery = document.querySelector('.homes--gallery');
 sectionGallery.append(homesGallery);
 
-fetch(' https://if-student-api.onrender.com/api/hotels', {
+fetch('https://if-student-api.onrender.com/api/hotels', {
   method: 'GET',
   headers: {
     'content-type': 'application/json',
@@ -19,7 +19,7 @@ fetch(' https://if-student-api.onrender.com/api/hotels', {
     return response.json();
   })
   .then((data) => {
-    console.log(data);
+    sessionStorage.setItem('path', JSON.stringify(data));
     data.map((element) => {
       const slider = document.createElement('div');
       slider.className = 'slider';
@@ -45,6 +45,7 @@ fetch(' https://if-student-api.onrender.com/api/hotels', {
       country.innerHTML = element.country;
       slider.appendChild(country);
     });
+    console.log(sessionStorage.getItem('path'));
   });
 const gap = 100;
 const content = document.querySelectorAll('.slider'),
