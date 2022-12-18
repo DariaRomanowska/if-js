@@ -10,8 +10,8 @@ const colors = {
     return {
       next() {
         if (index >= colorData.length) {
-          index = 0;
-          return { value: undefined, done: true };
+          index = 1;
+          return {value: colorData[0], done: true };
         } else {
           return { value: colorData[index++], done: false };
         }
@@ -19,14 +19,15 @@ const colors = {
     };
   },
 };
+
 const iterator1 = colors[Symbol.iterator]();
 const iterator2 = colors[Symbol.iterator]();
 const iterator3 = colors[Symbol.iterator]();
 
+
 el1.onclick = function changeStyle(event) {
   event.target.style.color = iterator1.next().value;
 };
-
 el2.onclick = function changeStyle(event) {
   event.target.style.color = iterator2.next().value;
 };
