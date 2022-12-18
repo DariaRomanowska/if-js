@@ -8,6 +8,7 @@
     "prepare": "husky install",
     "lint": "prettier --write . && eslint src/scripts/main.js --fix"
   },
+
   "repository": {
     "type": "git",
     "url": "git+https://github.com/DariaRomanowska/if-js.git"
