@@ -95,7 +95,6 @@ window.addEventListener('load', function () {
         return;
       }
       ++adult.value;
-
     } else if (e.target.classList.contains('adult-dec')) {
       if (Number(adultValue) - 1 < 0) {
         return;
