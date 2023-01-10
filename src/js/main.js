@@ -19,26 +19,32 @@ const checkBlock = [
   },
 ];
 
-const childOldArray = [
-  '0 years old',
-  '1 years old',
-  '2 years old',
-  '3 years old',
-  '4 years old',
-  '5 years old',
-  '6 years old',
-  '7 years old',
-  '8 years old',
-  '9 years old',
-  '10 years old',
-  '11 years old',
-  '12 years old',
-  '13 years old',
-  '14 years old',
-  '15 years old',
-  '16 years old',
-  '17 years old',
-];
+
+const i = 0;
+let childrenOptionAge = [];
+for( let i = 0; i < 17; ){
+  childrenOptionAge.push(i + 1 + 'years old')
+}
+console.log(childrenOptionAge)
+//   '0 years old',
+//   '1 years old',
+//   '2 years old',
+//   '3 years old',
+//   '4 years old',
+//   '5 years old',
+//   '6 years old',
+//   '7 years old',
+//   '8 years old',
+//   '9 years old',
+//   '10 years old',
+//   '11 years old',
+//   '12 years old',
+//   '13 years old',
+//   '14 years old',
+//   '15 years old',
+//   '16 years old',
+//   '17 years old',
+// ];
 
 const checkBar = document.getElementById('form-main');
 const barButton = document.getElementById('check-bar');
@@ -134,45 +140,64 @@ window.addEventListener('load', function () {
   childQuest.innerHTML = 'What is the age of the child you’re travelling with?';
   childBlockAge.appendChild(childQuest);
 
+  const divSelect = document.createElement('div');
+  divSelect.setAttribute('id', 'select-block');
+  divSelect.className = 'child-select-age';
+
   document.addEventListener('click', function (event) {
     const children = document.getElementById('child');
-    const value = children.value;
+    let value = children.value;
     if (Number(value) > 0) {
       childBlockAge.classList.add('show-child');
     } else {
       childBlockAge.classList.remove('show-child');
     }
+
+    function addSelect() {
+      const childSelect = document.createElement('SELECT');
+      childSelect.className = 'child-select';
+      childBlockAge.appendChild(divSelect);
+      divSelect.appendChild(childSelect);
+      for (const i in childOldArray) {
+        const childOpt = document.createElement('option');
+        childOpt.className = 'child-opt';
+        childOpt.innerHTML = childOldArray[i];
+        childSelect.appendChild(childOpt);
+      }
+      const currentSelects = document.querySelectorAll(
+        '#select-block .child-select',
+      );
+      console.log(currentSelects);
+      const currentSelectCount = currentSelects.length;
+      console.log(currentSelectCount);
+      if (value !== currentSelectCount) {
+        if (value < currentSelectCount) {
+          divSelect[0].remove();
+        }
+      } else {
+        return addSelect;
+      }
+    }
+    addSelect();
   });
 
-  const listSelects = [];
-  function addSelect() {
-    const divSelect = document.createElement('div');
-    const childSelect = document.createElement('SELECT');
-    childSelect.className = 'child-select';
-    divSelect.appendChild(childSelect);
-    for (const i in childOldArray) {
-      const childOpt = document.createElement('option');
-      childOpt.className = 'child-opt';
-      childOpt.innerHTML = childOldArray[i];
-      childSelect.appendChild(childOpt);
-    }
-    divSelect.className = 'div-sel';
-    childBlockAge.appendChild(divSelect);
-    listSelects.push(childSelect);
-    childSelect.id = `select_${listSelects.length}`;
-    childSelect.name = `selectName`;
-    divSelect.appendChild(childSelect);
-    for (let i = 0; i < childOldArray.length; i++) {
-      const option = document.createElement('option');
-      option.value = childOldArray[i];
-      option.text = childOldArray[i];
-      childSelect.add(option);
-    }
-  }
-
-  addSelect();
-
-  console.log(listSelects);
+  // function countChildrenAge() {
+  //   const inputChild = document.getElementById('child');
+  //   const value = Number(inputChild.value);
+  //   const currentSelect = document.querySelectorAll('.child-select');
+  //   console.log(currentSelect)
+  //   const currentSelectCount = currentSelect.length;
+  //   const newSelect = document.querySelectorAll('.child-select');
+  //   if (value !== currentSelectCount) {
+  //     if (value > currentSelectCount) {
+  //       divSelect.appendChild(newSelect);
+  //     } else {
+  //       divSelect.removeChild();
+  //     }
+  //   }
+  // }
+  //
+  // countChildrenAge();
 });
 
 barButton.addEventListener('click', () => {
