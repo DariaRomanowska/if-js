@@ -1,8 +1,10 @@
 console.log('--- LESSON 6 ---');
-const word = 'redivide';
-const palindrom = word.split('').reverse().join('');
+const word = 'redivider';
+const word2 = "return"
+const palindrom = (word) => word.split('').reverse().join('');
 
-console.log(word === palindrom);
+console.log(palindrom(word) === word);
+console.log(palindrom(word2) === word2);
 
 console.log('------');
 
@@ -188,8 +190,8 @@ console.log(cityByCountry);
 
 console.log('------');
 
-const daysInMonth = 30;
-const dayOfWeek = 0;
+const daysInMonth = 31;
+const dayOfWeek = 4;
 
 const getCalendarMonth = (daysInMonth, dayOfWeek) => {
   let day = daysInMonth - dayOfWeek + 1;
@@ -199,7 +201,10 @@ const getCalendarMonth = (daysInMonth, dayOfWeek) => {
     for (let j = 0; j < 7; j++) {
       if (dayOfWeek > 7) {
         return 'Error';
-      } else if (day > 30) {
+      }
+        else if (daysInMonth < 28) {
+          return 'Error';
+      } else if (day > daysInMonth) {
         day = 1;
       }
       week.push(day);
