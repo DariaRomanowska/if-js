@@ -11,7 +11,7 @@ const colors = {
       next() {
         if (index >= colorData.length) {
           index = 1;
-          return {value: colorData[0], done: true };
+          return { value: colorData[0], done: true };
         } else {
           return { value: colorData[index++], done: false };
         }
@@ -23,7 +23,6 @@ const colors = {
 const iterator1 = colors[Symbol.iterator]();
 const iterator2 = colors[Symbol.iterator]();
 const iterator3 = colors[Symbol.iterator]();
-
 
 el1.onclick = function changeStyle(event) {
   event.target.style.color = iterator1.next().value;
