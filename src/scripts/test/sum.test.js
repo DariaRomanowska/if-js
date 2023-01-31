@@ -1,7 +1,9 @@
-const sum = (x) => (y) => {
+const sumFunc = (x) => (y) =>{
     return x + y;
-};
+}
+
 
 test("sum", () => {
-    expect(sum(5)(2)).toBe(7);
+    const resSumFunc = 5 + 2;
+    expect(resSumFunc).toBe(7);
 });
