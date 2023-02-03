@@ -1,4 +1,4 @@
-const colors = ["magenta", "cyan", "firebrick", "springgreen", "skyblue"];
+const colors = ['magenta', 'cyan', 'firebrick', 'springgreen', 'skyblue'];
 
 const getColor = (item) => {
   if (colors.find((el) => el === item)) {
@@ -12,7 +12,6 @@ const getColor = (item) => {
   }
 };
 
-
-test("get next color from array", function () {
-  expect(getColor("magenta")).toBe("cyan");
+test('get next color from array', function () {
+  expect(getColor('magenta')).toBe('cyan');
 });
