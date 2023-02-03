@@ -1,7 +1,33 @@
 {
+  "dependencies": {
+    "jest": "^29.3.1",
+    "prettier": "2.7.1",
+    "save-dev": "^0.0.1-security"
+  },
+  "devDependencies": {
+    "@babel/plugin-transform-modules-commonjs": "^7.20.11",
+    "@babel/preset-env": "^7.20.2",
+    "@ngneat/falso": "^6.1.0",
+    "eslint": "8.22.0"
+  },
+  "scripts": {
+    "test": "jest",
+    "prepare": "husky install",
+    "lint": "prettier --write . && eslint scripts/main.js",
+    "prepublish": "npm run lint && npm test"
+  },
+  "jest": {
+    "transform": {
+      "^.+\\.jsx?$": "babel-jest"
+    }
+  },
   "name": "if",
   "version": "1.0.0",
-  "description": "",
+  "main": "jest.config.js",
+  "directories": {
+    "test": "tests",
+  "name": "if",
+  "version": "1.0.0",
   "main": "src/scripts/main.js",
   "scripts": {
     "test": "echo \"Error: no test specified\" && exit 1",
@@ -12,8 +38,7 @@
     "type": "git",
     "url": "git+https://github.com/DariaRomanowska/if-js.git"
   },
-  "keywords": [],
-  "author": "",
+  "author": "Daria",
   "license": "ISC",
   "bugs": {
     "url": "https://github.com/DariaRomanowska/if-js/issues"
@@ -24,4 +49,5 @@
     "husky": "^8.0.1",
     "prettier": "2.7.1"
   }
+}
 }

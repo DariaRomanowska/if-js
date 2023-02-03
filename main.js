@@ -1,27 +1,27 @@
 const studentsData = [
   {
-    firstName: "Василий",
-    lastName: "Петров",
+    firstName: 'Василий',
+    lastName: 'Петров',
     admissionYear: 2019,
-    courseName: "Java",
+    courseName: 'Java',
   },
   {
-    firstName: "Иван",
-    lastName: "Иванов",
+    firstName: 'Иван',
+    lastName: 'Иванов',
     admissionYear: 2018,
-    courseName: "JavaScript",
+    courseName: 'JavaScript',
   },
   {
-    firstName: "Александр",
-    lastName: "Федоров",
+    firstName: 'Александр',
+    lastName: 'Федоров',
     admissionYear: 2017,
-    courseName: "Python",
+    courseName: 'Python',
   },
   {
-    firstName: "Николай",
-    lastName: "Петров",
+    firstName: 'Николай',
+    lastName: 'Петров',
     admissionYear: 2019,
-    courseName: "Android",
+    courseName: 'Android',
   },
 ];
 
@@ -51,14 +51,15 @@ class Student extends User {
 
 class Students {
   constructor(studentList) {
-    this.studentList = studentList
+    this.studentList = studentList;
   }
 
-  getList(){
+  getList() {
     return this.studentList.map(
-        ({ firstName, lastName, admissionYear, courseName }) =>
-            new Student(firstName, lastName, admissionYear, courseName));
-      }
+      ({ firstName, lastName, admissionYear, courseName }) =>
+        new Student(firstName, lastName, admissionYear, courseName),
+    );
+  }
 
   getInfo() {
     return this.getList()
@@ -67,7 +68,7 @@ class Students {
       })
       .map(
         (student) =>
-          `${student.fullName} -  ${student.courseName} , ${student.course} курс`
+          `${student.fullName} -  ${student.courseName} , ${student.course} курс`,
       );
 
   }
