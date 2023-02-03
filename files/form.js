@@ -27,15 +27,8 @@ formElem.addEventListener('submit', async (event) => {
   const res = await fetch(
     'https://if-student-api.onrender.com/api/file',
     fetchOptions,
-  )
-    .then((response) => {
-      if (!response.ok) {
-        throw new Error(response.statusText);
-      }
-      return response.json;
-    })
-    .then((result) => result)
-    .catch((error) => console.log(error.message));
+  );
+  let result = await res.json();
 
-  console.log(res);
+  console.log(result);
 });
