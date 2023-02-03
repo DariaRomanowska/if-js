@@ -1,10 +1,9 @@
-console.log('--- LESSON 6 ---');
-const word = 'redivider';
-const word2 = "return"
-const palindrom = (word) => word.split('').reverse().join('');
-
-console.log(palindrom(word) === word);
-console.log(palindrom(word2) === word2);
+const palindrom = (word) => {
+  const wordReversed = word.split('').reverse().join('');
+ return word === wordReversed;
+}
+console.log(palindrom("return"))
+console.log(palindrom("redivider"))
 
 console.log('------');
 
@@ -191,7 +190,7 @@ console.log(cityByCountry);
 console.log('------');
 
 const daysInMonth = 31;
-const dayOfWeek = 4;
+const dayOfWeek = 7;
 
 const getCalendarMonth = (daysInMonth, dayOfWeek) => {
   let day = daysInMonth - dayOfWeek + 1;
@@ -199,12 +198,20 @@ const getCalendarMonth = (daysInMonth, dayOfWeek) => {
   for (let i = 0; i < 5; i++) {
     const week = [];
     for (let j = 0; j < 7; j++) {
-      if (dayOfWeek > 7) {
-        return 'Error';
+      try {
+        if (dayOfWeek > 7) throw (' greater than days in a week');
       }
-        else if (daysInMonth < 28) {
-          return 'Error';
-      } else if (day > daysInMonth) {
+      catch (err) {
+        return 'value' + err
+      }
+      try {
+        if (daysInMonth < 28) throw (' is less than days in a month');
+        if (daysInMonth > 31) throw (' is greater than days in a month');
+      }
+      catch (err) {
+        return 'value' + err
+      }
+      if (day > daysInMonth) {
         day = 1;
       }
       week.push(day);
@@ -214,6 +221,12 @@ const getCalendarMonth = (daysInMonth, dayOfWeek) => {
   }
   return dates;
 };
+
+function catchError(dayOfWeek) {
+
+}
+
+catchError(dayOfWeek);
 
 const calendarMonth = getCalendarMonth(daysInMonth, dayOfWeek);
 console.log(calendarMonth);
