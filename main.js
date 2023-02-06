@@ -56,20 +56,27 @@ function deepEqual(object1, object2) {
 console.log(deepEqual(obj1, obj2));
 console.log(deepEqual(obj1, obj3));
 
-const daysInMonth = 31;
-const dayOfWeek = 1;
+const daysInMonth = 30;
+const dayOfWeek = 7;
 
 const getCalendarMonth = (daysInMonth, dayOfWeek) => {
   let day = daysInMonth - dayOfWeek + 1;
   let dates = [];
-  for (let i = 0; i < 5; i++) {
+  for (let i = 0; i < 6; i++) {
     const week = [];
     for (let j = 0; j < 7; j++) {
-      if (dayOfWeek > 7) {
-        return "Error";
-      } else if (daysInMonth < 28) {
-        return "Error";
-      } else if (day > daysInMonth) {
+      try {
+        if (dayOfWeek > 7) throw ' greater than days in a week';
+      } catch (err) {
+        return 'value' + err;
+      }
+      try {
+        if (daysInMonth < 28) throw ' is less than days in a month';
+        if (daysInMonth > 31) throw ' is greater than days in a month';
+      } catch (err) {
+        return 'value' + err;
+      }
+      if (day > daysInMonth) {
         day = 1;
       }
       week.push(day);
@@ -81,39 +88,53 @@ const getCalendarMonth = (daysInMonth, dayOfWeek) => {
 };
 
 const calendarMonth = getCalendarMonth(daysInMonth, dayOfWeek);
+console.log(calendarMonth);
 let daysArray = calendarMonth.flat();
+console.log(daysArray);
 
 const notCurrentMonth = (arr) => {
   const res = [];
-  for (let o = 0; o < arr.length; o++){
-    if(o < 7 && arr[o] > 27) {
-      res.push(true)
-    } else if (o > 28 && arr[o] < 7){
-      res.push(true)
+  for (let i = 0; i < arr.length; i++) {
+    if (i < dayOfWeek && arr[i] > daysInMonth - dayOfWeek) {
+      res.push(true);
+    } else if (i > daysInMonth - dayOfWeek && arr[i] < dayOfWeek) {
+      res.push(true);
     } else {
-      res.push(false)
+      res.push(false);
     }
-  }return res
-}
+  }
+  return res;
+};
 const notCurrentMonthRes = notCurrentMonth(daysArray);
+console.log(notCurrentMonthRes);
 
 let selectedDate = (arr, checkInDate, checkOutDate) => {
   let resDate = [];
   for (let i = 0; i < arr.length; i++) {
-    if (checkInDate === arr[i]) {
+    if (
+      (checkInDate === arr[i] && i < daysInMonth - dayOfWeek) ||
+      (checkOutDate === arr[i] && i > dayOfWeek)
+    ) {
       resDate.push(true);
-    } else if (checkInDate > 31) {
-      return `Error day`;
-    } else if (checkOutDate === arr[i] && checkOutDate > checkInDate) {
+    } else if (arr[i] >= checkInDate && arr[i] <= checkOutDate) {
       resDate.push(true);
-    } else if (checkOutDate < checkInDate) {
-      return `Error date`;
     } else resDate.push(false);
+  }
+  try {
+    if (checkInDate > daysInMonth) throw ' greater than days in a month';
+  } catch (err) {
+    return 'value' + err;
+  }
+  try {
+    if (checkOutDate < checkInDate) throw ' cannot be less than the first date';
+  } catch (err) {
+    return 'value' + err;
   }
   return resDate;
 };
 
-let selectedDateRes = selectedDate(daysArray, 6, 13);
+let selectedDateRes = selectedDate(daysArray, 6, 31);
+console.log(selectedDateRes);
 
 const days = [{}];
 const selected = [{}];
@@ -123,10 +144,20 @@ daysArray.forEach((item) => days.push({ dayOfMonth: item }));
 selectedDateRes.forEach((item) => selected.push({ selectedDay: item }));
 notCurrentMonthRes.forEach((item) => current.push({ notCurrentMonth: item }));
 
-
-const calendar = days.map((item, index) => ({
+const calendarDay = days.map((item, index) => ({
   ...item,
   ...selected[index],
   ...current[index],
 }));
-console.log(calendar);
+
+function convertArr(arr, cols) {
+  let resultArr = [];
+  while (arr.length > 0) {
+    resultArr.push(arr.slice(0, cols));
+    arr.splice(0, cols);
+  }
+  return resultArr;
+}
+let cols = 7;
+calendarDay.shift();
+console.log(convertArr(calendarDay, cols));
