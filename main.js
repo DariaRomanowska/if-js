@@ -1,9 +1,9 @@
 const palindrom = (word) => {
   const wordReversed = word.split('').reverse().join('');
- return word === wordReversed;
-}
-console.log(palindrom("return"))
-console.log(palindrom("redivider"))
+  return word === wordReversed;
+};
+console.log(palindrom('return'));
+console.log(palindrom('redivider'));
 
 console.log('------');
 
@@ -170,46 +170,43 @@ const find = (value) => {
   );
 };
 
-const findString = find('Poland');
+const findString = find('USA');
 
 console.log(
   findString.map(({ name, city, country }) => String([name, city, country])),
 );
-
-console.log('-----');
-
-const cityByCountry = {};
-for (const { city, country } of hotels) {
-  if (!Object.hasOwn(cityByCountry, country)) {
-    cityByCountry[country] = [];
+function countrySorter(data) {
+  const cityByCountry = {};
+  for (const { city, country } of data) {
+    if (!Object.hasOwn(cityByCountry, country)) {
+      cityByCountry[country] = [];
+    }
+    cityByCountry[country].push(city);
   }
-  cityByCountry[country].push(city);
+  return cityByCountry;
 }
-console.log(cityByCountry);
 
-console.log('------');
+console.log(countrySorter(hotels));
 
 const daysInMonth = 31;
 const dayOfWeek = 7;
 
 const getCalendarMonth = (daysInMonth, dayOfWeek) => {
   let day = daysInMonth - dayOfWeek + 1;
-  let dates = [];
-  for (let i = 0; i < 5; i++) {
+  const dates = [];
+  for (let i = 0; i < 6; i++) {
     const week = [];
     for (let j = 0; j < 7; j++) {
       try {
-        if (dayOfWeek > 7) throw (' greater than days in a week');
-      }
-      catch (err) {
-        return 'value' + err
+        if (dayOfWeek > 7) throw ' greater than days in a week';
+      } catch (err) {
+        return 'value' + err;
       }
       try {
-        if (daysInMonth < 28) throw (' is less than days in a month');
-        if (daysInMonth > 31) throw (' is greater than days in a month');
-      }
-      catch (err) {
-        return 'value' + err
+        if (daysInMonth < 28) throw ' is less than days in a month';
+        if (daysInMonth > 31) throw ' is greater than days in a month';
+      } catch (err) {
+        return 'value' + err;
       }
       if (day > daysInMonth) {
         day = 1;
@@ -221,12 +218,6 @@ const getCalendarMonth = (daysInMonth, dayOfWeek) => {
   }
   return dates;
 };
-
-function catchError(dayOfWeek) {
-
-}
-
-catchError(dayOfWeek);
 
 const calendarMonth = getCalendarMonth(daysInMonth, dayOfWeek);
 console.log(calendarMonth);
