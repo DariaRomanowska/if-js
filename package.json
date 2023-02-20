@@ -21,7 +21,7 @@
   "homepage": "https://github.com/DariaRomanowska/if-js#readme",
   "devDependencies": {
     "eslint": "8.22.0",
-    "husky": "^8.0.1",
+    "husky": "^8.0.0",
     "prettier": "2.7.1"
   }
 }
