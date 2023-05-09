@@ -196,12 +196,14 @@ body {
   grid-column: 2 / 3;
   width: 30px;
   height: 30px;
+  cursor: pointer;
 }
 
 .navigation--login {
   grid-column: 3 / 4;
   width: 40px;
   height: 40px;
+  cursor: pointer;
 }
 
 .menu {
@@ -223,7 +225,39 @@ nav a {
 }
 
 nav a::after {
-  content: "";
+  content: '';
+  position: absolute;
+  width: 0;
+  height: 4px;
+  top: 100%;
+  left: 15%;
+  background: #f5bd41;
+  transform: translate(-10%);
+}
+
+nav a:hover::after {
+  width: 90%;
+}
+.menu {
+  display: none;
+}
+
+nav {
+  font-weight: 400;
+  font-size: 24px;
+  line-height: 28px;
+  text-align: center;
+}
+
+nav a {
+  text-decoration: none;
+  color: var(--general-white);
+  position: relative;
+  line-height: 44px;
+}
+
+nav a::after {
+  content: '';
   position: absolute;
   width: 0;
   height: 4px;
@@ -245,9 +279,26 @@ nav a:hover::after {
   margin-bottom: 100px;
 }
 
+form {
+  position: relative;
+  z-index: 44;
+}
+
+.bg {
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 90vw;
+  height: 150vh;
+  z-index: 1;
+}
+
+
+
 .row-flex {
   display: flex;
   flex-direction: row;
+  position: relative;
 }
 
 .column-flex {
@@ -266,7 +317,7 @@ nav a:hover::after {
   background-color: white;
   border: 3px solid #f3f3f3;
   border-radius: 8px;
-  margin-bottom: 120px;
+  gap: 3px;
 }
 
 .search input {
@@ -313,24 +364,83 @@ nav a:hover::after {
 }
 
 .search--date {
-  width: 24%;
+  width: 31%;
 }
 
 .search--rooms {
-  width: 34%;
+  display: flex;
+  width: 27%;
+  align-items: center;
+  border-radius: 8px;
+}
+
+.room-block {
+  display: flex;
+  width: 100%;
+  align-items: center;
+  justify-content: space-around;
+  position: relative;
+}
+
+.search--rooms:focus {
+  outline: 3px solid #f5bd41;
+}
+
+.adult,
+.room,
+.child {
+  position: relative;
+}
+
+.adult::after {
+  position: absolute;
+  content: '\2014';
+  right: -5%;
+  transform: translateX(100%);
+}
+
+.room::after {
+  position: absolute;
+  content: '\2014';
+  right: -5%;
+  transform: translateX(100%);
+}
+.check--form {
+  display: none;
+  padding: 22px;
+  width: 90%;
+  background-color: #ffffff;
+  border-radius: 8px;
+  order: -1;
+  border: 2px solid #ffffff;
+  -webkit-box-shadow: 6px 13px 29px 2px rgba(0, 0, 0, 0.55);
+  -moz-box-shadow: 6px 13px 29px 2px rgba(0, 0, 0, 0.55);
+  box-shadow: 6px 13px 29px 2px rgba(0, 0, 0, 0.55);
+}
+.check--form_content {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
+  height: 30px;
   align-items: center;
 }
 
+.show-modal {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  gap: 12px;
+  z-index: 666;
+  position: absolute;
+  right: 0;
+  top: 290%;
+}
 .search--submit {
   width: 12%;
 }
 
-.rooms--label {
+.count-name {
   color: #383838;
-  position: absolute;
-  top: 50%;
-  left: 40px;
-  transform: translate(-20px, -59%);
 }
 
 ._input-block {
@@ -342,28 +452,6 @@ nav a:hover::after {
 .child_before {
   position: relative;
   z-index: 0;
-}
-
-.adult_after :after {
-  display: block;
-  position: absolute;
-  content: '';
-  width: 15px;
-  border: 1px solid #383838;
-  right: -30%;
-  top: 50%;
-  transform: translate(140%, -50%);
-}
-
-.child_after :after {
-  display: block;
-  position: absolute;
-  content: '';
-  width: 15px;
-  border: 1px solid #383838;
-  right: -10%;
-  top: 50%;
-  transform: translate(120%, -50%);
 }
 
 .search--submit_input {
@@ -384,38 +472,6 @@ nav a:hover::after {
   display: none;
 }
 
-.app {
-  gap: 40px;
-  width: 100%;
-  padding-bottom: 120px;
-}
-
-.app svg:first-child {
-  width: 135px;
-  height: 40px;
-  justify-self: end;
-}
-
-.app svg:last-child {
-  width: 120px;
-  height: 40px;
-  justify-self: start;
-}
-
-.check--form {
-  display: none;
-  padding: 22px;
-  width: 25%;
-  height: 160px;
-  background-color: #ffffff;
-  border-radius: 8px 8px 0 0;
-  position: absolute;
-  right: 0;
-  top: 12px;
-  transform: translate(-45%, 40%);
-  order: -1;
-  border-bottom: 2px solid #ffffff;
-}
 .check--form_content {
   display: flex;
   justify-content: space-between;
@@ -423,13 +479,16 @@ nav a:hover::after {
   height: 30px;
   align-items: center;
 }
-
 .check-stepper {
   display: flex;
   flex-direction: row;
   max-width: 120px;
   width: 100%;
   position: relative;
+}
+
+.check-stepper input {
+  height: 20px;
 }
 
 .check-name,
@@ -440,15 +499,13 @@ nav a:hover::after {
   font-size: 16px;
   line-height: 19px;
   text-align: center;
+  color: #000;
 }
 
 .check-count {
   width: 25%;
   margin: 0 auto;
   border: none;
-}
-
-.stepper-btn {
 }
 
 .btn-check-l,
@@ -458,10 +515,20 @@ nav a:hover::after {
   font-weight: 400;
   font-size: 18px;
   line-height: 21px;
+}
+
+.active {
   border: 1px solid #3077c6;
   background-color: #fff;
   height: 50%;
   color: #3077c6;
+}
+
+.disabled {
+  border: 1px solid #cecece;
+  background-color: #fff;
+  height: 50%;
+  color: #cecece;
 }
 
 .btn-check-l,
@@ -470,6 +537,7 @@ nav a:hover::after {
   height: 30px;
   bottom: -1px;
   width: 30px;
+  cursor: pointer;
 }
 
 .btn-check-r {
@@ -487,26 +555,6 @@ nav a:hover::after {
   color: #cecece;
 }
 
-.show {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 12px;
-}
-
-.child-block {
-  display: none;
-  padding: 0 22px 22px 22px;
-  width: 100%;
-  background-color: #ffffff;
-  position: absolute;
-  border-radius: 0 0 8px 8px;
-  bottom: 0;
-  left: 45%;
-  transform: translate(-45%, 100%);
-  order: 1;
-}
-
 .child-text {
   font-family: 'Roboto', sans-serif;
   font-style: normal;
@@ -514,6 +562,7 @@ nav a:hover::after {
   font-size: 12px;
   line-height: 14px;
   margin-bottom: 12px;
+  color: #000000;
 }
 
 .child-select,
@@ -535,11 +584,24 @@ nav a:hover::after {
   padding: 8px;
 }
 
-.show-child {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-between;
-  gap: 12px;
+
+.app {
+  gap: 40px;
+  width: 100%;
+  padding-bottom: 120px;
+  margin-top: 120px;
+}
+
+.app svg:first-child {
+  width: 135px;
+  height: 40px;
+  justify-self: end;
+}
+
+.app svg:last-child {
+  width: 120px;
+  height: 40px;
+  justify-self: start;
 }
 
 .advantages {
@@ -575,11 +637,6 @@ h2:hover::after {
 
 .row {
   display: flex;
-  justify-content: space-between;
-  flex-wrap: wrap;
-  margin-left: -8px;
-  margin-right: -8px;
-  margin-top: 104px;
 }
 
 .column {
@@ -1275,7 +1332,6 @@ footer {
     display: inline-block;
     order: 3;
     cursor: pointer;
-
   }
 
   .dropdown-content {
@@ -1293,7 +1349,6 @@ footer {
     display: block;
     font-size: 14px;
     line-height: 16px;
-
   }
 
   .dropdown-content a:hover {
@@ -1439,7 +1494,7 @@ footer {
   }
 
   .adult_after :after,
-  .child_after :after{
+  .child_after :after {
     width: 30px;
     left: 104px;
     bottom: 50%;
@@ -1463,11 +1518,11 @@ footer {
     transform: translate(-50%, -50%);
   }
 
-  .app{
+  .app {
     padding-bottom: 40px;
   }
 
-   .column {
+  .column {
     margin-bottom: 32px;
   }
 
@@ -1478,10 +1533,6 @@ footer {
   .advantages h2 {
     font-size: 28px;
     line-height: 32px;
-  }
-
-  .row {
-    margin-top: 32px;
   }
 
   .advantages {
@@ -1803,20 +1854,16 @@ footer {
 
 @media only screen and (max-width: 750px) {
   .adult_after :after,
-  .child_after :after
-  {
+  .child_after :after {
     left: 70px;
     transform: translate(50%, -70px);
   }
-
 }
 
 @media only screen and (max-width: 540px) {
   .adult_after :after,
-  .child_after :after
-  {
+  .child_after :after {
     left: 40px;
     transform: translate(50%, -40px);
   }
-
 }

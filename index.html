@@ -240,21 +240,21 @@
           <use href="#title" />
         </svg>
         <div class="header--nav">
-          <nav class="navigation--links _lg">
-            <a href="#">Stays</a>
-            <a href="#">Attractions</a>
-          </nav>
-          <div class="navigation--links">
-            <svg class="navigation--mode">
-              <use href="#mode" />
+          <div class="dropdown" style="float: right">
+            <svg class="menu dropbtn">
+              <use href="#menu"/>
             </svg>
-            <svg class="navigation--login">
-              <use href="#login" />
-            </svg>
-            <svg class="menu">
-              <use href="#menu" />
-            </svg>
+            <nav class="navigation--links dropdown-content" style="right: 0">
+              <a href="#">Stays</a>
+              <a href="#">Attractions</a>
+            </nav>
           </div>
+          <svg class="navigation--mode">
+            <use href="#mode"/>
+          </svg>
+          <svg class="navigation--login">
+            <use href="#login"/>
+          </svg>
         </div>
       </div>
       <div class="container sm-1-col title">
@@ -263,114 +263,78 @@
           to live, work or just relax
         </h1>
       </div>
-      <form class="container search sm-3-col">
-        <div class="label-lg" id="test">
-          <label class="search--name__title-lg _white _name" for="hotel-name"
+      <form class="container">
+        <div class="search">
+          <div class="search--place _input-block _placeholder">
+            <label for="hotel-name"
             >Your destination or hotel name</label
-          >
-          <label class="search--date__title-lg _white _date" for="date">
-            Check-in - Check-out</label
-          >
-        </div>
-        <div class="input-lg" id="form-main">
-          <input
-            class="search--name__input-lg _black"
-            id="hotel-name"
-            name="place"
-            type="text"
-            value="New York"
-          />
-          <input
-            class="search--date__input-lg _black"
-            id="date"
-            name="date"
-            type="text"
-            value="Tue 15 Sept - Sat 19 Sept"
-          />
-          <input
-            class="search--check__bar _black focus"
-            id="check-bar"
-            type="text"
-            value="2 Adults - 0 Children - 1 Rooms"
-          />
-          <input
-            class="search--submit__input"
-            name="submit"
-            id="submit"
-            type="submit"
-            value="Search"
-          />
-        </div>
-        <div class="search--name_sm">
-          <input
-            class="search--name__input-sm _search"
-            name="place"
-            type="text"
-            value="Your destination or hotel name"
-          />
-          <svg class="search--name__icon">
-            <use href="#search" />
-          </svg>
-        </div>
-        <div class="search--date_sm">
-          <label class="search--date__title_sm _left" for="date-check-in">
-            Check-in date</label
-          >
-          <input
-            class="search--date__input_sm _left"
-            id="date-check-in"
-            name="date"
-            type="text"
-            value="Tue 15 Sept 2020"
-          />
-          <label class="search--date__title_sm _right" for="date-check-out"
-            >Check-out date</label
-          >
-          <input
-            class="search--date__input_sm _right"
-            id="date-check-out"
-            name="date"
-            type="text"
-            value="Sat 19 Sept 2020"
-          />
-        </div>
-        <div class="search--check_sm">
-          <label class="search--check__title_sm _star" for="adults"
-            >Adults</label
-          >
-          <input
-            class="search--check__input_sm _start"
-            id="adults"
-            name="bar"
-            type="text"
-            value="2"
-          />
-          <label class="search--check__title_sm _midl" for="children"
-            >Children</label
-          >
-          <input
-            class="search--check__input_sm _midl _border"
-            id="children"
-            name="bar"
-            type="text"
-            value="0"
-          />
-          <label class="search--check__title_sm _end" for="rooms">Rooms</label>
-          <input
-            class="search--check__input_sm _end"
-            id="rooms"
-            name="bar"
-            type="text"
-            value="1"
-          />
-        </div>
-        <div class="search--submit_sm">
-          <input
-            class="search--submit__input_sm"
-            name="submit"
-            type="submit"
-            value="Search"
-          />
+            >
+            <input
+                    class="search--name _black _frame"
+                    id="hotel-name"
+                    name="place"
+                    type="text"
+                    placeholder="New York"
+            />
+            <svg>
+              <use href="#search" />
+            </svg>
+          </div>
+          <div class="search--date _input-block">
+            <div class="row search--date_mobile">
+              <div class="column _placeholder label-left">
+                <label for="date-left">
+                  Check-in &mdash;</label
+                >
+                <input
+                        type="text"
+                        placeholder="Tue 15 Sept"
+                        name="date"
+                        id="date-left">
+              </div>
+              <div class="column _placeholder label-right">
+                <label  for="date-right">
+                  Check-out</label
+                >
+                <input type="text"
+                       placeholder="Sat 19 Sept"
+                       name="date"
+                       id="date-right">
+              </div>
+            </div>
+          </div>
+          <div class="search--rooms _input-block">
+            <div class="row _placeholder room-block">
+              <div class="column _placeholder label-center adult_after">
+                <label class="rooms--label" for="adult">Adults</label>
+                <input
+                        placeholder="2"
+                        name="rooms"
+                        id="adult">
+              </div>
+              <div class="column _placeholder label-center child_after">
+                <label class="rooms--label " for="child">Children</label>
+                <input placeholder="0"
+                       name="rooms"
+                       id="child">
+              </div>
+              <div class="column _placeholder label-center">
+                <label class="rooms--label" for="room">Rooms</label>
+                <input class="room-input"
+                       placeholder="1 "
+                       name="rooms"
+                       id="room">
+              </div>
+            </div>
+          </div>
+          <div class="search--submit _input-block">
+            <input
+                    class="search--submit_input"
+                    name="submit"
+                    type="submit"
+                    value="Search"
+            />
+          </div>
         </div>
       </form>
       <div class="container lg-2-col sm-2-col app">
@@ -705,6 +669,6 @@
         &#169; 2020 Triphouse, Inc. All rights reserved
       </p>
     </footer>
-    <script src="./src/js/main.js"></script>
+    <script type="module" src="jsOld/main.js"></script>
   </body>
 </html>

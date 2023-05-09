@@ -240,12 +240,12 @@
     <div class="main">
       <div class="container header lg-12-col sm-6-col">
         <svg class="header--title">
-          <use href="#title"/>
+          <use href="#title" />
         </svg>
         <div class="header--nav">
           <div class="dropdown" style="float: right">
             <svg class="menu dropbtn">
-              <use href="#menu"/>
+              <use href="#menu" />
             </svg>
             <nav class="navigation--links dropdown-content" style="right: 0">
               <a href="#">Stays</a>
@@ -253,31 +253,30 @@
             </nav>
           </div>
           <svg class="navigation--mode">
-            <use href="#mode"/>
+            <use href="#mode" />
           </svg>
           <svg class="navigation--login">
-            <use href="#login"/>
+            <use href="#login" />
           </svg>
         </div>
       </div>
       <div class="container sm-1-col title">
         <h1 class="main-title">
-          Discover stays <br/>
+          Discover stays <br />
           to live, work or just relax
         </h1>
       </div>
-      <form class="container">
+      <div class="bg" id="bg"></div>
+      <form class="container" id="form">
         <div class="search">
           <div class="search--place _input-block _placeholder">
-            <label for="hotel-name"
-            >Your destination or hotel name</label
-            >
+            <label for="hotel-name">Your destination or hotel name</label>
             <input
-                    class="search--name _black _frame"
-                    id="hotel-name"
-                    name="place"
-                    type="text"
-                    placeholder="New York"
+              class="search--name"
+              id="hotel-name"
+              name="place"
+              type="text"
+              placeholder="New York"
             />
             <svg>
               <use href="#search" />
@@ -285,57 +284,39 @@
           </div>
           <div class="search--date _input-block">
             <div class="row-flex search--date_mobile">
-              <div class="colum-flexn  _placeholder label-left">
-                <label for="date-left">
-                  Check-in &mdash;</label
-                >
+              <div class="colum-flex _placeholder label-left">
+                <label for="date-left"> Check-in &mdash;</label>
                 <input
-                        type="text"
-                        placeholder="Tue 15 Sept"
-                        name="date"
-                        id="date-left">
+                  type="text"
+                  placeholder="Tue 15 Sept"
+                  name="date"
+                  id="date-left"
+                />
               </div>
-              <div class="column-flex  _placeholder label-right">
-                <label  for="date-right">
-                  Check-out</label
-                >
-                <input type="text"
-                       placeholder="Sat 19 Sept"
-                       name="date"
-                       id="date-right">
+              <div class="column-flex _placeholder label-right">
+                <label for="date-right"> Check-out</label>
+                <input
+                  type="text"
+                  placeholder="Sat 19 Sept"
+                  name="date"
+                  id="date-right"
+                />
               </div>
             </div>
           </div>
-          <div class="search--rooms _input-block">
-            <div class=" row-flex _placeholder room-block">
-              <div class="column-flex _placeholder label-center adult_after">
-                <label class="rooms--label" for="adult">Adults</label>
-                <input
-                        placeholder="2"
-                        name="rooms"
-                        id="adult">
-              </div>
-              <div class="column-flex  _placeholder label-center child_after">
-                <label class="rooms--label " for="child">Children</label>
-                <input placeholder="0"
-                       name="rooms"
-                       id="child">
-              </div>
-              <div class="column-flex  _placeholder label-center">
-                <label class="rooms--label" for="room">Rooms</label>
-                <input class="room-input"
-                       placeholder="1 "
-                       name="rooms"
-                       id="room">
-              </div>
+          <div class="search--rooms _input-block" id="showModal" tabindex="0">
+            <div class="row-flex _placeholder room-block" id="input-bg">
+              <span class="count-name adult" data-value="adults">0 Adults</span>
+              <span class="count-name room" data-value="rooms">0 Rooms</span>
+              <span class="count-name child" data-value="children">0 Children</span>
             </div>
           </div>
           <div class="search--submit _input-block">
             <input
-                    class="search--submit_input"
-                    name="submit"
-                    type="submit"
-                    value="Search"
+              class="search--submit_input"
+              name="submit"
+              type="submit"
+              value="Search"
             />
           </div>
         </div>
@@ -669,7 +650,7 @@
       </div>
       <p class="footer-down">&#169; 2020 Triphouse, Inc. All rights reserved</p>
     </footer>
+
     <script src="js/main.js"></script>
   </body>
 </html>
-
