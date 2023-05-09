@@ -28,7 +28,7 @@ const elements = {
       count: 0,
       values: {
         min: 0,
-        max: 10,
+        max: 30,
       },
     },
     rooms: {
@@ -38,7 +38,7 @@ const elements = {
       count: 0,
       values: {
         min: 0,
-        max: 10,
+        max: 30,
       },
     },
     children: {
